@@ -1,58 +1,105 @@
 function encriptarTexto(){
     let texto = document.getElementById("texto").value;
-    let tituloMensaje = document.getElementById("mensajeEncriptado");
+    let tituloMensaje = document.getElementById("tituloMensaje");
     let parrafo = document.getElementById("parrafoMensaje");
     let imagenNino = document.getElementById("imagenPersona");
+    let btnCopy = document.getElementById("btnCopiar");
+    let textoCifrado = document.getElementById("oculto");
+    let mayusculas = /[A-Z]/.test(texto);
+    let caracteresEspeciales = /[^a-zA-Z0-9\s]/.test(texto);
+    
 
-    let textoCifrado = texto
-    .replace(/a/gi, "ai")
-    .replace(/e/gi, "enter")
-    .replace(/i/gi, "imes")
-    .replace(/o/gi, "ober")
-    .replace(/u/gi, "ufat");
+    if(texto.length!=0)
+    {   
+        if(mayusculas || caracteresEspeciales)
+        {
+            swal("Oops!", "El texto no puede contener mayusculas o caracteres especiales");
+        }
+        else
+        {
+            
+            textoCifrado.textContent = texto
+            .replaceAll("e", "enter")
+            .replaceAll("i", "imes")
+            .replaceAll("a", "ai")
+            .replaceAll("o", "ober")
+            .replaceAll("u", "ufat");
+        
+            imagenNino.style.display = "none";
+            tituloMensaje.textContent = "Texto encriptado con exito";
+            parrafo.textContent = "";
+        }
+        
 
-    if(texto.length != 0)
-    {
-        document.getElementById("texto").value = textoCifrado;
-        tituloMensaje.textContent = "Texto encriptado con exito";
-        parrafo.textContent = "";
-        imagenNino.src = "./Imagenes/encriptado.jpg";
     }
     else
     {
-        imagenNino.src = "./Imagenes/muñeco.png";
-        parrafo="Ingresa el texto que deseas encriptar";
-        tituloMensaje.textContent="Ningun mensaje encontrado";
-        alert("Debes ingresar un texto");
+        swal("Oops!", "Debes ingresar un texto");
     }
+
+   
+
+
+}
+
+function copiarTexto()
+{
+    
+    let textoCifrado = document.getElementById("oculto").textContent;
+
+    if(textoCifrado.length!=0)
+    {   
+        
+        document.getElementById("texto").value = textoCifrado;
+       
+    }
+    else
+    {
+        swal("Oops!", "Debes incriptar un texto primero");
+    } 
+
+    
 }
 
 function desencriptarTexto()
 {
+
+
     let texto = document.getElementById("texto").value;
-    let tituloMensaje = document.getElementById("mensajeEncriptado");
+    let tituloMensaje = document.getElementById("tituloMensaje");
     let parrafo = document.getElementById("parrafoMensaje");
     let imagenNino = document.getElementById("imagenPersona");
+    let btnCopy = document.getElementById("btnCopiar");
+    let textoCifrado = document.getElementById("oculto");
+    let mayusculas = /[A-Z]/.test(texto);
+    let caracteresEspeciales = /[^a-zA-Z0-9\s]/.test(texto);
+    
 
-    let textoCifrado = texto
-    .replace(/ai/gi, "a")
-    .replace(/enter/gi, "e")
-    .replace(/imes/gi, "i")
-    .replace(/ober/gi, "o")
-    .replace(/ufat/gi, "u");
+    if(texto.length!=0)
+    {   
+        if(mayusculas || caracteresEspeciales)
+        {
+            swal("Oops!", "El texto no puede contener mayusculas o caracteres especiales");
+        }
+        else
+        {
+            
+            textoCifrado.textContent = texto
+            .replace(/ai/gi, "a")
+            .replace(/enter/gi, "e")
+            .replace(/imes/gi, "i")
+            .replace(/ober/gi, "o")
+            .replace(/ufat/gi, "u");
+        
+            imagenNino.style.display = "none";
+            tituloMensaje.textContent = "Texto desencriptado con exito";
+            parrafo.textContent = "";
+        }
+        
 
-    if(texto.length != 0)
-    {
-        document.getElementById("texto").value = textoCifrado;
-        tituloMensaje.textContent = "Texto desencriptado con exito";
-        parrafo.textContent = "";
-        imagenNino.src = "./Imagenes/desencriptado.jpg";
     }
     else
     {
-        imagenNino.src = "./Imagenes/muñeco.png";
-        tituloMensaje.textContent="Ningun mensaje encontrado";
-        parrafo.textContent="Ingrese el texto que desea encriptar o desencriptar";
-        alert("Debes ingresar un texto");
+        swal("Oops!", "Debes ingresar un texto");
     }
 }

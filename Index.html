@@ -7,6 +7,7 @@
     <title>Encriptador</title>
     <link rel="shortcut icon" href="Imagenes/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 </head>
 <body>
@@ -25,22 +26,28 @@
             <div class="botones">
                 <button class="btnEncriptar" type="button" onclick="encriptarTexto()">Encriptar</button>
                 <button class="btnDesencriptar" type="button" onclick="desencriptarTexto()">Desencriptar</button>
-                <input type="button" class="btnCopiar" onclick="copiarTexto()" value="Copiar"/>
+                
             </div>
         </div>
 
         <div class="cajaMuestra">
+            <p id="oculto"></p>
             <img src="Imagenes/muñeco.png" alt="" id="imagenPersona">
             <div class="mensajeEncriptado" id="mensajeEncriptado">
-                <h2 >Ningun mensaje encontrado</h2>
-                <p id="parrafoMensaje">Ingresa el texto que deseas encriptar</p>
                 <!--<textarea name="mensaje" id="mensaje" cols="30" rows="10" class="mensaje"></textarea>-->
+                <h2 id="tituloMensaje">Ningun mensaje encontrado</h2>
+                <p id="parrafoMensaje">Ingresa el texto que deseas encriptar</p>
+                <input type="button" class="btnCopiar" id="btnCopiar" value="Copiar" onclick="copiarTexto()" />
             </div>
+
         </div>
     </div>
 
 
-    <script src="encriptador.js"></script>
+    
     
 </body>
+
+<script src="encriptador.js"></script>
+
 </html>
